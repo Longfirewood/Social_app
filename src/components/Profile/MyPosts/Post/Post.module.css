@@ -1,0 +1,15 @@
+.small_image {
+    width: 60px;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 50%;
+  }
+
+.post {
+    padding: 20px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    
+}

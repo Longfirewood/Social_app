@@ -1,0 +1,18 @@
+.small_image {
+    width: 50px;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 50%;
+  }
+
+  .sender {
+    position: relative;
+    right: -360px;
+    color:rgb(32, 12, 160);
+ 
+    
+  }
+
+
+  

@@ -1,0 +1,16 @@
+.dialogsScreen {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-areas: 
+    "d m"
+    
+    ;
+}
+
+.messages {
+    grid-area: m;
+}
+
+.dialog {
+    grid-area: d;
+} 
