@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import c from './Post.module.css';
 
 
 
 const Post = (props) => {
-   
+   const [counter, setCounter] = useState(Number(props.like_counter));
+
+   let increment = () => {
+    setCounter(counter + 1)
+   }
+
     return (
         <div className={c.post}>
             <div>
@@ -14,9 +19,9 @@ const Post = (props) => {
                 {props.message}
             </div>
             <div>
-                Likes {props.like_counter}
+                Likes {counter}
+                <button onClick={increment}> Add like </button>
             </div>
-           
         </div>
         
     )

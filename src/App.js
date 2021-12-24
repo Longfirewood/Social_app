@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import Header from './components/Header/Header';
@@ -8,7 +7,7 @@ import Dialogs from './components/Dialogs/Dialogs';
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
 } from "react-router-dom";
 
 
@@ -24,9 +23,10 @@ const App = (props) => {
       <Nav />
       <div className='content'>
       <Routes>
-            <Route path= '/profile' element={<Profile state={props.state.profilePage}/>}/>
-            <Route path= '/dialogs' element={<Dialogs state={props.state.dialogsPage}/>}/>
+            <Route path= '/profile' element={<Profile state={props.state.profilePage} addPost={props.addPost} updateNewPost={props.updateNewPost}/>}/>
+            <Route path= '/dialogs' element={<Dialogs state={props.state.dialogsPage}/>}/>       
       </Routes>
+      
       </div>
     </div>
     </BrowserRouter>

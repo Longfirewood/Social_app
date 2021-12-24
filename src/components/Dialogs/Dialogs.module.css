@@ -14,3 +14,9 @@
 .dialog {
     grid-area: d;
 } 
+
+
+.sender {
+    position: relative;
+    right: -550px;
+  }
