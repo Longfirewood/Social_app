@@ -38,7 +38,9 @@ import {renderEntireScreen} from '../render'
             {id: '4', text: 'React', sender:'1'},
             {id: '5', text: 'mem', sender:'0'},
             {id: '5', text: 'Good', sender:'0'}
-            ]}
+            ],
+            newMessageText: 'hey'
+          }
           }
       }
   
@@ -47,8 +49,8 @@ import {renderEntireScreen} from '../render'
   export let addPost = () => {
       let item = {id: '5', message: state.profilePage.newPostText, like_counter: '0'};
       state.profilePage.posts.push(item)
-      renderEntireScreen(state)
       updateNewPost('');
+      renderEntireScreen(state)
   }
 
 
@@ -57,5 +59,15 @@ import {renderEntireScreen} from '../render'
     renderEntireScreen(state)
 }
 
+export let addMessage = () => {
+  let item = {id: '6', text: state.dialogsPage.messages.newMessageText, sender:'0'}
+  state.dialogsPage.messages.Victor.push(item)
+  renderEntireScreen(state)
+}
 
-  export default state;
+export let updateNewMessage = (newtext) => {
+  state.dialogsPage.messages.newMessageText = newtext;
+  renderEntireScreen(state)
+}
+
+export default state;

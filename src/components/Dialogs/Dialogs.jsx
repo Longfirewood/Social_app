@@ -5,14 +5,24 @@ import Message from './Message/Message';
 import { Field, Form } from 'react-final-form'
 
 
-const Dialogs = (props) => {
-let dialogElements = props.state.dialogItems.map(item => <Dialog className={c.dialog} name={item.name} id={item.id}/>)
-let messageElements = props.state.messages.Victor.map(item => <Message className={c.messages} text={item.text} sender={item.sender}/>)
+class Dialogs extends React.Component {
+    render() {
+let dialogElements = this.props.state.dialogItems.map(item => <Dialog className={c.dialog} name={item.name} id={item.id}/>)
+let messageElements = this.props.state.messages.Victor.map(item => <Message className={c.messages} text={item.text} sender={item.sender}/>)
 
-let onSubmit = (props) => {
-    return (
-        alert(props.TEXT)
-    )
+let inputField = React.createRef()
+let addMessage = this.props.addMessage;
+let updateNewMessage = this.props.updateNewMessage;
+
+let onClick = () => {
+    let text = inputField.current.value;
+    addMessage(text)
+}
+
+let onChange = () => {
+    let newtext = inputField.current.value;
+    console.log(newtext)
+    updateNewMessage(newtext)
 }
 
     return (
@@ -27,18 +37,22 @@ let onSubmit = (props) => {
             </div>
 
             <div className={c.sender}>
-                    <Form
+                    <input placeholder='New message' ref={inputField} onChange={onChange}/>
+                    <button type='submit' onClick={onClick}>Submit</button>
+
+                    {/* <Form
                         onSubmit={onSubmit}
                         render={({handleSubmit}) => (
                             <form onSubmit={handleSubmit}>
                                 <Field component="input" placeholder='Write new post' name='TEXT' />
                                 <button type='submit'>Submit</button>
                             </form>
-                        )}/>
-                    
+                        )}/> */}
+                        
                 </div>
         </div>
     )
+                        }
 }
 
 export default Dialogs
