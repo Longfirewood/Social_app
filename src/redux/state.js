@@ -1,4 +1,7 @@
-import {renderEntireScreen} from '../render'
+
+let renderEntireScreen = () => {
+  console.log('State changed');
+}
 
 
   
@@ -68,6 +71,10 @@ export let addMessage = () => {
 export let updateNewMessage = (newtext) => {
   state.dialogsPage.messages.newMessageText = newtext;
   renderEntireScreen(state)
+}
+
+export const subscribe = (observer) => {
+  renderEntireScreen = observer;
 }
 
 export default state;
