@@ -1,11 +1,7 @@
 
-let renderEntireScreen = () => {
-  console.log('State changed');
-}
 
-
-  
-  let state = {
+  let store = {
+     _state: {
       profilePage: {
         posts: [
             {id: '1', message: 'My first post. Yo', like_counter: '5'},
@@ -45,36 +41,37 @@ let renderEntireScreen = () => {
             newMessageText: 'hey'
           }
           }
-      }
-  
-  window.state = state;
-
-  export let addPost = () => {
-      let item = {id: '5', message: state.profilePage.newPostText, like_counter: '0'};
-      state.profilePage.posts.push(item)
-      updateNewPost('');
-      renderEntireScreen(state)
+      },
+      getState() {
+          return this._state;
+      },
+      _callSubscriber() {
+        console.log('State changed');
+    },
+      addPost() {
+        let item = {id: '5', message: this._state.profilePage.newPostText, like_counter: '0'};
+        this._state.profilePage.posts.push(item)
+        this._callSubscriber(this._state)
+    },
+      updateNewPost(newText) {
+        this._state.profilePage.newPostText = newText;
+        this._callSubscriber(this._state)
+  },
+      addMessage() {
+        let item = {id: '6', text: this._state.dialogsPage.messages.newMessageText, sender:'0'}
+        this._state.dialogsPage.messages.Victor.push(item)
+        this._callSubscriber(this._state)
+  },
+      updateNewMessage(newtext) {
+        this._state.dialogsPage.messages.newMessageText = newtext;
+        this._callSubscriber(this._state)
+  },
+      subscribe(observer) {
+      this._callSubscriber = observer;
   }
+  
+    }
 
+window.store = store;
 
-  export let updateNewPost = (newText) => {
-    state.profilePage.newPostText = newText;
-    renderEntireScreen(state)
-}
-
-export let addMessage = () => {
-  let item = {id: '6', text: state.dialogsPage.messages.newMessageText, sender:'0'}
-  state.dialogsPage.messages.Victor.push(item)
-  renderEntireScreen(state)
-}
-
-export let updateNewMessage = (newtext) => {
-  state.dialogsPage.messages.newMessageText = newtext;
-  renderEntireScreen(state)
-}
-
-export const subscribe = (observer) => {
-  renderEntireScreen = observer;
-}
-
-export default state;
+export default store;
