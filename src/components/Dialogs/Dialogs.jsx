@@ -3,7 +3,7 @@ import c from './Dialogs.module.css';
 import Dialog from './Dialog/Dialog'
 import Message from './Message/Message';
 import { Field, Form } from 'react-final-form'
-
+import {updateNewMessageActionCreator, addMessageActionCreator} from '/Users/matvey/Documents/projects/project1/my-app/src/redux/state.js'
 
 class Dialogs extends React.Component {
     render() {
@@ -13,16 +13,15 @@ let messageElements = this.props.state.messages.Victor.map(item => <Message clas
 let inputField = React.createRef()
 let addMessage = this.props.addMessage;
 let updateNewMessage = this.props.updateNewMessage;
-
+let MessageBodyText = this.props.state.messages.newMessageText;
 let onClick = () => {
     let text = inputField.current.value;
-    addMessage(text)
+    this.props.dispatch(addMessageActionCreator());
 }
 
 let onChange = () => {
     let newtext = inputField.current.value;
-    console.log(newtext)
-    updateNewMessage(newtext)
+    this.props.dispatch(updateNewMessageActionCreator(newtext));
 }
 
     return (
@@ -37,7 +36,7 @@ let onChange = () => {
             </div>
 
             <div className={c.sender}>
-                    <input placeholder='New message' ref={inputField} onChange={onChange}/>
+                    <input value={MessageBodyText} placeholder='New message' ref={inputField} onChange={onChange}/>
                     <button type='submit' onClick={onClick}>Submit</button>
 
                     {/* <Form
