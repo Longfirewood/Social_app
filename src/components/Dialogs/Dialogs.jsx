@@ -3,7 +3,7 @@ import c from './Dialogs.module.css';
 import Dialog from './Dialog/Dialog'
 import Message from './Message/Message';
 import { Field, Form } from 'react-final-form'
-import {updateNewMessageActionCreator, addMessageActionCreator} from '/Users/matvey/Documents/projects/project1/my-app/src/redux/state.js'
+import {updateNewMessageActionCreator, addMessageActionCreator} from '/Users/matvey/Documents/projects/project1/my-app/src/redux/dialogs-reducer.js'
 
 class Dialogs extends React.Component {
     render() {

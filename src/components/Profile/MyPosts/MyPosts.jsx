@@ -1,7 +1,7 @@
 import React from 'react';
 import Post from './Post/Post';
 import c from './MyPosts.module.css';
-import {updateNewPostActionCreator, addPostActionCreator} from '/Users/matvey/Documents/projects/project1/my-app/src/redux/state.js';
+import {updateNewPostActionCreator, addPostActionCreator} from '/Users/matvey/Documents/projects/project1/my-app/src/redux/profile-reducer.js';
 
 
 
@@ -18,7 +18,9 @@ class MyPosts extends React.Component {
     }
 
     let onPostChange = () => {
+        
         let newtext = inputField.current.value;
+        
         this.props.dispatch( updateNewPostActionCreator(newtext) );
     }
 
@@ -33,7 +35,7 @@ class MyPosts extends React.Component {
                 
             </div>
             <div>
-                {postElements}===
+                {postElements}
             </div>
         </div>
     )
