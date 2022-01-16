@@ -9,19 +9,20 @@ class Dialogs extends React.Component {
     render() {
 let dialogElements = this.props.state.dialogItems.map(item => <Dialog className={c.dialog} name={item.name} id={item.id}/>)
 let messageElements = this.props.state.messages.Victor.map(item => <Message className={c.messages} text={item.text} sender={item.sender}/>)
-
 let inputField = React.createRef()
-let addMessage = this.props.addMessage;
-let updateNewMessage = this.props.updateNewMessage;
+
 let MessageBodyText = this.props.state.messages.newMessageText;
 let onClick = () => {
-    let text = inputField.current.value;
-    this.props.dispatch(addMessageActionCreator());
+    this.props.addMessage()
+    //this.props.dispatch(addMessageActionCreator());
 }
+console.log(this.props.state)
 
 let onChange = () => {
     let newtext = inputField.current.value;
-    this.props.dispatch(updateNewMessageActionCreator(newtext));
+    this.props.updateNewMessage(newtext)
+    
+    //this.props.dispatch(updateNewMessageActionCreator(newtext));
 }
 
     return (

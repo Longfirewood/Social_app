@@ -8,20 +8,19 @@ import {updateNewPostActionCreator, addPostActionCreator} from '/Users/matvey/Do
 class MyPosts extends React.Component {
     render() {
     let postElements = this.props.posts.map(post => <Post message={post.message} like_counter={post.like_counter} />)
-    let newMessageBody = this.props.posts.newMessageText;
+    let newMessageBody = this.props.newMessageText;
     let inputField = React.createRef()
 
 
     let onSubmit = () => {
-        let text = inputField.current.value;
-        this.props.dispatch(addPostActionCreator());
+        this.props.addPost();
+        //this.props.dispatch(addPostActionCreator());
     }
 
     let onPostChange = () => {
-        
         let newtext = inputField.current.value;
-        
-        this.props.dispatch( updateNewPostActionCreator(newtext) );
+        this.props.updateNewPost(newtext);
+        //this.props.dispatch( updateNewPostActionCreator(newtext) );
     }
 
     return (
