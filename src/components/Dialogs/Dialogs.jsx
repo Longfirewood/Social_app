@@ -3,26 +3,24 @@ import c from './Dialogs.module.css';
 import Dialog from './Dialog/Dialog'
 import Message from './Message/Message';
 import { Field, Form } from 'react-final-form'
-import {updateNewMessageActionCreator, addMessageActionCreator} from '/Users/matvey/Documents/projects/project1/my-app/src/redux/dialogs-reducer.js'
+
 
 class Dialogs extends React.Component {
     render() {
-let dialogElements = this.props.state.dialogItems.map(item => <Dialog className={c.dialog} name={item.name} id={item.id}/>)
-let messageElements = this.props.state.messages.Victor.map(item => <Message className={c.messages} text={item.text} sender={item.sender}/>)
+let dialogElements = this.props.dialogItems.map(item => <Dialog className={c.dialog} name={item.name} id={item.id}/>)
+let messageElements = this.props.messages.map(item => <Message className={c.messages} text={item.text} sender={item.sender}/>)
 let inputField = React.createRef()
 
-let MessageBodyText = this.props.state.messages.newMessageText;
+let MessageBodyText = this.props.newMessageText;
 let onClick = () => {
     this.props.addMessage()
-    //this.props.dispatch(addMessageActionCreator());
 }
-console.log(this.props.state)
+
 
 let onChange = () => {
     let newtext = inputField.current.value;
     this.props.updateNewMessage(newtext)
-    
-    //this.props.dispatch(updateNewMessageActionCreator(newtext));
+
 }
 
     return (

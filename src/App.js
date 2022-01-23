@@ -3,25 +3,24 @@ import React from "react";
 import Header from "./components/Header/Header";
 import Nav from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import ToastComponent from "./components/Toast/Toast";
+import store from "./redux/redux-store";
 
-const App = (props) => {
+const App = () => {
+  
+
   return (
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
         <Nav />
         <div className="content">
+          
           <Routes>
-            <Route path="/profile" element={<Profile store={props.store} />} />
-            <Route
-              path="/dialogs"
-              element={
-                <DialogsContainer store={props.store} />
-              }
-            />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/dialogs" element={<DialogsContainer />} />
           </Routes>
         </div>
       </div>

@@ -1,44 +1,45 @@
 import React from 'react';
 import Post from './Post/Post';
 import c from './MyPosts.module.css';
-import {updateNewPostActionCreator, addPostActionCreator} from '/Users/matvey/Documents/projects/project1/my-app/src/redux/profile-reducer.js';
+import ToastComponent from '../../Toast/Toast';
 
 
 
 class MyPosts extends React.Component {
     render() {
-    let postElements = this.props.posts.map(post => <Post message={post.message} like_counter={post.like_counter} />)
-    let newMessageBody = this.props.newMessageText;
-    let inputField = React.createRef()
+        let postElements = this.props.posts.map(post => <Post message={post.message} like_counter={post.like_counter} />)
+        let newMessageBody = this.props.newMessageText;
+        let inputField = React.createRef()
 
 
-    let onSubmit = () => {
-        this.props.addPost();
-        //this.props.dispatch(addPostActionCreator());
-    }
+        let onSubmit = () => {
+            this.props.addPost();
 
-    let onPostChange = () => {
-        let newtext = inputField.current.value;
-        this.props.updateNewPost(newtext);
-        //this.props.dispatch( updateNewPostActionCreator(newtext) );
-    }
+        }
 
-    return (
-        <div>
-            <h2>My posts</h2>
+        let onPostChange = () => {
+            let newtext = inputField.current.value;
+            this.props.updateNewPost(newtext);
+        }
+        let isPosted = this.props.isPosted;
+        console.log(isPosted);
+
+        return (
             <div>
+                <h2 className={c.header}>My posts</h2>
                 <div>
-                    <input value={newMessageBody} ref={inputField} onChange={onPostChange}/>
-                    <button type='submit' onClick={onSubmit}> Submit </button>
+                    <div className={c.new_post}>
+                        <input value={newMessageBody} ref={inputField} onChange={onPostChange} />
+                        <button className={c.button} type='submit' onClick={onSubmit}> Submit </button>
+                    </div>
+                    <div>{isPosted ? <ToastComponent /> : null}</div>
                 </div>
-                
+                <div>
+                    {postElements}
+                </div>
             </div>
-            <div>
-                {postElements}
-            </div>
-        </div>
-    )
-            }
+        )
+    }
 }
 
 export default MyPosts;
