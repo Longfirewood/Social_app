@@ -1,6 +1,5 @@
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST = "UPDATE_NEW_POST";
-const SHOW_TOAST = "SHOW_TOAST";
 
 let initialState = {
   posts: [
@@ -10,7 +9,6 @@ let initialState = {
     { id: "4", message: "Keklelele", like_counter: "3" },
   ],
   newPostText: "hey",
-  isPosted: false,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -19,19 +17,15 @@ const profileReducer = (state = initialState, action) => {
       let item = { id: "5", message: state.newPostText, like_counter: "0" };
       let stateCopy = { ...state };
       stateCopy.posts = [...state.posts];
-      stateCopy.posts.push(item);
+      stateCopy.posts.unshift(item);
       stateCopy.isPosted = true;
 
+      //stateCopy.newPostText = "";
       return stateCopy;
     }
     case UPDATE_NEW_POST: {
       let stateCopy = { ...state };
       stateCopy.newPostText = action.newText;
-      return stateCopy;
-    }
-    case SHOW_TOAST: {
-      let stateCopy = { ...state };
-      stateCopy.isPosted = true;
       return stateCopy;
     }
     default:
@@ -45,10 +39,6 @@ export const addPostActionCreator = () => {
 
 export const updateNewPostActionCreator = (newtext) => {
   return { type: UPDATE_NEW_POST, newText: newtext };
-};
-
-export const showToastActionCreator = () => {
-  return { type: SHOW_TOAST };
 };
 
 export default profileReducer;

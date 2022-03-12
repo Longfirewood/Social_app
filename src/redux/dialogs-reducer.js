@@ -15,7 +15,7 @@ let initialState = {
     { id: "3", text: "How are you?", sender: "1" },
     { id: "4", text: "I am fine", sender: "0" },
     { id: "5", text: "Good", sender: "1" },
-    { id: "5", text: "Good", sender: "0" },
+    { id: "6", text: "Good", sender: "0" },
   ],
   newMessageText: "",
 };

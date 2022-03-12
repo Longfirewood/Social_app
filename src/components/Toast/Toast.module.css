@@ -1,33 +1,42 @@
-.notification-container {
+.notification_container {
   font-size: 14px;
   box-sizing: border-box;
   position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10000;
+
+  padding: 20px 15px 10px 10px;
+  border-radius: 10px;
 }
 
-.top-right {
-  top: 12px;
-  right: 12px;
-  transition: transform 0.6s ease-in-out;
-  animation: toast-in-right 0.7s;
+.top_right {
+  top: 1rem;
+  right: 1rem;
+  z-index: 10000;
+  position: fixed;
 }
 
-.bottom-right {
-  bottom: 12px;
-  right: 12px;
-  transition: transform 0.6s ease-in-out;
-  animation: toast-in-right 0.7s;
+.toast {
+  background-color: rgb(93, 156, 93);
+  padding: 20px 15px 10px 10px;
+  height: 50px;
+  width: 400px;
 }
 
-.top-left {
-  top: 12px;
-  left: 12px;
-  transition: transform 0.6s ease-in;
-  animation: toast-in-left 0.7s;
+.buttom_right {
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 10000;
+  position: fixed;
 }
 
-.bottom-left {
-  bottom: 12px;
-  left: 12px;
-  transition: transform 0.6s ease-in;
-  animation: toast-in-left 0.7s;
+.notification_title {
+  font-size: x-large;
+  color: aliceblue;
+  padding-left: 20px;
+}
+
+.notification_message {
+  color: aliceblue;
 }
