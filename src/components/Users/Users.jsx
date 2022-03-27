@@ -9,7 +9,7 @@ const Users = (props) => {
 
     let [totalCount, setTotalCount] = useState(props.totalCount);
     let [currentPage, setCurrentPage] = useState(props.currentPage);
-    
+
 
     const getUsers = () => {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${props.count}`)
@@ -19,11 +19,9 @@ const Users = (props) => {
             })
     }
 
-    
+
 
     useEffect(() => { getUsers() }, [currentPage]);
-
-
     let pageNumbers = Math.ceil(totalCount / 15);
     let usersElements = props.users.map(user => <UserItem user={user} follow={props.follow} unfollow={props.unfollow} />)
 

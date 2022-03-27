@@ -49,7 +49,6 @@ const UserItem = (props) => {
             <div className={c.item_1}>
                 <img className={c.image} src='https://klike.net/uploads/posts/2019-06/1560329641_2.jpg' />
                 <div >
-                    {/* {props.user.followed === true ? <button className={c.button} onClick={() => { props.unfollow(props.user.id) }}>Unfollow</button> : <button className={c.button} onClick={() => { props.follow(props.user.id) }}>Follow</button>} */}
                     {props.user.followed ? <button className={c.button} onClick={clickHandler}>Unfollow</button>
                         : <button className={c.button} onClick={clickHandler}>Follow</button>}
                 </div>
@@ -78,6 +77,15 @@ const UserItem = (props) => {
 }
 
 export default UserItem;
+
+
+
+
+
+
+
+
+
 
 //let buttonName = props.user.followed === true ? 'Unfollow' : 'Follow';
     //let userId = props.user.id
