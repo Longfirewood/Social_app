@@ -1,12 +1,15 @@
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
+const SET_USERS_PROFILE = "SET_USERS_PROFILE";
 
 let initialState = {
   users: [],
   count: "15",
   currentPage: "1",
-  totalCount: '0'
+  totalCount: "0",
+  userId: "23106",
+  userProfile: {},
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -38,20 +41,30 @@ const usersReducer = (state = initialState, action) => {
     case SET_USERS: {
       return { ...state, users: action.users };
     }
+
+    case SET_USERS_PROFILE: {
+      console.log(action.userProfile, "reduxProfile");
+      return { ...state, userProfile: action.userProfile };
+    }
     default:
       return state;
   }
 };
 
-export const followActionCreator = (userId) => {
+export const follow = (userId) => {
   return { type: FOLLOW, userId: userId };
 };
 
-export const unfollowActionCreator = (userId) => {
+export const unfollow = (userId) => {
   return { type: UNFOLLOW, userId: userId };
 };
 
-export const setUsersActionCreator = (users) => {
+export const setUsers = (users) => {
   return { type: SET_USERS, users: users };
 };
+
+export const setUserProfile = (userProfile) => {
+  return { type: SET_USERS_PROFILE, userProfile: userProfile };
+};
+
 export default usersReducer;

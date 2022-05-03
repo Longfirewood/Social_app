@@ -23,7 +23,7 @@ const Users = (props) => {
 
     useEffect(() => { getUsers() }, [currentPage]);
     let pageNumbers = Math.ceil(totalCount / 15);
-    let usersElements = props.users.map(user => <UserItem user={user} follow={props.follow} unfollow={props.unfollow} />)
+    let usersElements = props.users.map(user => <UserItem user={user} follow={props.follow} unfollow={props.unfollow} setUserProfile={props.setUserProfile} />)
 
     let pageList = [];
     for (var i = 1; i <= pageNumbers; i++) {

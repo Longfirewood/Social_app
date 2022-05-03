@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import store from "./redux/redux-store";
 import UsersContainer from "./components/Users/UsersContainer";
+import UserProfileContainer from "./components/Users/UserProfileContainer/UserProfileContainer";
 
 const App = () => {
   return (
@@ -19,6 +20,9 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/dialogs" element={<DialogsContainer />} />
             <Route path="/users" element={<UsersContainer />} />
+            <Route path="/userProfile" element={<UserProfileContainer />}>
+              <Route path=":userId" element={<UserProfileContainer />} />
+            </Route>
           </Routes>
         </div>
       </div>

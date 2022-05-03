@@ -8,7 +8,7 @@
 
 .parent {
   display: flex;
-  height: 100px; /* Or whatever */
+  /* height: 100px;  */
   width: 1200px;
   flex-flow: row wrap;
   justify-content: center;
@@ -23,8 +23,8 @@
 }
 
 .item_2 {
-  width: 500px; /* Or whatever */
-  height: 100px; /* Or whatever */
+  width: 500px;
+  /* height: 100px;  */
   border-radius: 15px;
   border-width: 5px;
   border-style: solid;

@@ -1,9 +1,12 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+
+
 import c from './UserItem.module.css';
 
 const UserItem = (props) => {
+
 
 
 
@@ -43,11 +46,18 @@ const UserItem = (props) => {
         }
     }
 
+    const goToProfileHandler = (userId) => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+            .then(response => {
+                props.setUserProfile(response.data)
+            })
+    }
 
     return (
         <div className={c.parent}>
             <div className={c.item_1}>
-                <img className={c.image} src='https://klike.net/uploads/posts/2019-06/1560329641_2.jpg' />
+                {props.user.photos.small == null ? <img className={c.image} src='https://klike.net/uploads/posts/2019-06/1560329641_2.jpg' /> :
+                    <img className={c.image} src={props.user.photos.small} />}
                 <div >
                     {props.user.followed ? <button className={c.button} onClick={clickHandler}>Unfollow</button>
                         : <button className={c.button} onClick={clickHandler}>Follow</button>}
@@ -56,23 +66,22 @@ const UserItem = (props) => {
 
             <div className={c.item_2}>
                 <div>
-                    Name:  {props.user.name}
-                </div>
-                <div >
-                    Status: {props.user.status}
-                </div>
-
-                {/* <div>
                     <div>
-                        {'props.user.address.country'}
+                        Name:  {props.user.name}
                     </div>
-                    <div>
-                        {'props.user.address.city'}
+                    <div >
+                        Status: {props.user.status}
                     </div>
-                </div> */}
-
+                </div>
+                <div>
+                    <NavLink to={`/userProfile/${props.user.id}`}>
+                        <button onClick={() => goToProfileHandler(props.user.id)}> Go to the profile </button>
+                    </NavLink>
+                </div>
             </div>
-        </div>
+
+        </div >
+
     )
 }
 

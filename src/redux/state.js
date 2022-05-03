@@ -47,18 +47,8 @@ let store = {
       action
     );
     this._callSubscriber(this._state);
-  },
+  }
 
-  //     addMessage() {
-  //       let item = {id: '6', text: this._state.dialogsPage.messages.newMessageText, sender:'0'}
-  //       this._state.dialogsPage.messages.Victor.push(item);
-  //       this._state.dialogsPage.messages.newMessageText = '';
-  //       this._callSubscriber(this._state)
-  // },
-  //     updateNewMessage(newtext) {
-  //       this._state.dialogsPage.messages.newMessageText = newtext;
-  //       this._callSubscriber(this._state)
-  // },
   subscribe(observer) {
     this._callSubscriber = observer;
   },

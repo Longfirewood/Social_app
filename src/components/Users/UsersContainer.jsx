@@ -1,6 +1,7 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { followActionCreator, unfollowActionCreator, setUsersActionCreator } from '../../redux/users-reducer';
+import { follow, unfollow, setUsers, setUserProfile } from '../../redux/users-reducer';
 import Users from './Users';
 
 
@@ -13,15 +14,15 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (body) => dispatch(followActionCreator(body)),
-        unfollow: (body) => dispatch(unfollowActionCreator(body)),
-        setUsers: (body) => dispatch(setUsersActionCreator(body))
-    }
-}
+// const setUserInfo = (userId) => {
+// axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+//     .then(response => {
+//         setUserProfile(response.data)
+//     })
+// }
 
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+
+const UsersContainer = connect(mapStateToProps, { follow, unfollow, setUsers, setUserProfile })(Users);
 
 export default UsersContainer;
